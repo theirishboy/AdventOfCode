@@ -58,21 +58,33 @@ fun main() {
             println()
             if (orderedHand.isEmpty()) orderedHand.add(sortedMap) else{
                 var insertIndex: Int? = null
-                var nextBestCard = 0
                 for ((index, hand) in orderedHand.withIndex()) {
-                    if (hand.values.elementAt(nextBestCard) < sortedMap.values.elementAt(nextBestCard)) {
-                        insertIndex = index
-                        break // Once you find the insertion point, you can exit the loop
-                    } else if (hand.values.elementAt(nextBestCard) == sortedMap.values.elementAt(nextBestCard)){
-                        if (isElementOrigineHigher(hand.keys.elementAt(nextBestCard),sortedMap.keys.elementAt(nextBestCard)) || hand.keys.elementAt(nextBestCard) == sortedMap.keys.elementAt(nextBestCard) ){
-                            nextBestCard++
-                        } else{
-                            insertIndex = index
-                            break
-                        }
-
+                    val lookForNextCard = false
+                    var i = 0
+                    if (hand.values.elementAt(i) > sortedMap.values.elementAt(i)) continue
+                    if (hand.values.elementAt(i) == sortedMap.values.elementAt(i)){
 
                     }
+                    if (hand.values.elementAt(i) < sortedMap.values.elementAt(i)) {
+                        insertIndex = index
+                        break
+                    }
+                    //Pour chaque main
+//                    val maxLocal =  if (hand.values.size < sortedMap.values.size)   hand.values.size else sortedMap.values.size
+//                    for (i in 0..maxLocal){
+//                        if (hand.values.elementAt(i) < sortedMap.values.elementAt(i)) {
+//                            println("insert ${sortedMap.values.elementAt(i)} at $index")
+//                            insertIndex = index
+//                            break // Once you find the insertion point, you can exit the loop
+//                        } else if (hand.values.elementAt(i) == sortedMap.values.elementAt(i)){
+//                            if (isElementOrigineHigher(hand.keys.elementAt(i),sortedMap.keys.elementAt(i)) || hand.keys.elementAt(i) == sortedMap.keys.elementAt(i) ){
+//                                insertIndex = index
+//                                break
+//                            }
+//                        }
+//                    }
+//                    if (insertIndex != null) break
+
                 }
 
                 if (insertIndex != null) {
